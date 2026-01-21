@@ -49,6 +49,34 @@ export default function WeatherCard({ data }) {
            <span className="text-lg font-bold text-gray-700">{feelsLike}°</span>
         </div>
       </div>
+
+      {/* Forecast Section */}
+      {data.forecast && data.forecast.list && (
+          <div className="w-full mt-6 pt-6 border-t border-gray-100">
+              <h4 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wider">7-Day Forecast</h4>
+              <div className="space-y-3">
+                  {data.forecast.list.slice(0, 7).map((day, idx) => {
+                      const date = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                      const dayIcon = day.weather?.[0]?.icon;
+                      const dayIconUrl = dayIcon ? `https://openweathermap.org/img/wn/${dayIcon}.png` : '';
+                      
+                      return (
+                          <div key={idx} className="flex items-center justify-between text-sm">
+                              <span className="w-24 text-gray-600 font-medium">{date}</span>
+                              <div className="flex items-center gap-2">
+                                  {dayIconUrl && <img src={dayIconUrl} alt="icon" className="w-8 h-8 object-contain" />}
+                                  <span className="text-gray-500 capitalize text-xs">{day.weather?.[0]?.description}</span>
+                              </div>
+                              <div className="flex gap-2 font-semibold text-gray-800">
+                                  <span>{Math.round(day.temp.max || day.temp.day)}°</span>
+                                  <span className="text-gray-400">{Math.round(day.temp.min || day.temp.day)}°</span>
+                              </div>
+                          </div>
+                      );
+                  })}
+              </div>
+          </div>
+      )}
     </div>
   );
 }
