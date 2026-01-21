@@ -19,6 +19,9 @@ export async function POST(req) {
         }
     }
 
+
+
+
     const prompt = `
       You are a helpful and witty weather assistant. 
       ${contextPart}
