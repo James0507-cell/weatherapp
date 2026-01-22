@@ -6,7 +6,7 @@ export async function POST(req) {
   try {
     const { weatherData, query } = await req.json();
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
     let contextPart = "";
     if (weatherData) {
