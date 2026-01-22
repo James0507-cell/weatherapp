@@ -63,6 +63,33 @@ export default function Home() {
     }
   };
 
+  const handleSummarize = async (data) => {
+      const prompt = "Summarize the weather conditions and suggest 3 suitable activities.";
+      setQuery(prompt);
+      setIsAiLoading(true);
+      
+      try {
+          // Scroll to AI section if needed (optional, but good UX)
+          // const aiSection = document.getElementById('ai-section');
+          // if (aiSection) aiSection.scrollIntoView({ behavior: 'smooth' });
+
+          const response = await fetch("/api/chat", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                  weatherData: data, 
+                  query: prompt
+              }),
+          });
+          const result = await response.json();
+          setAiResponse(result.text);
+      } catch (err) {
+          setAiResponse("Unable to generate summary.");
+      } finally {
+          setIsAiLoading(false);
+      }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Hero / Search Section */}
@@ -92,9 +119,13 @@ export default function Home() {
 
       {/* Weather Cards Grid */}
       {weatherList.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
               {weatherList.map((data, index) => (
-                  <WeatherCard key={`${data.name}-${index}`} data={data} />
+                  <WeatherCard 
+                      key={`${data.name}-${index}`} 
+                      data={data} 
+                      onSummarize={() => handleSummarize(data)}
+                  />
               ))}
           </div>
       )}

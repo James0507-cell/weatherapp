@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function WeatherCard({ data }) {
+export default function WeatherCard({ data, onSummarize }) {
   if (!data) return null;
 
   const iconCode = data.weather?.[0]?.icon;
@@ -15,7 +15,23 @@ export default function WeatherCard({ data }) {
   const feelsLike = Math.round(data.main?.feels_like || 0);
 
   return (
-    <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 flex flex-col items-center justify-between transition-transform hover:scale-105 duration-300 w-full max-w-sm mx-auto">
+    <div className="group relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-gray-100 p-6 flex flex-col items-center justify-between transition-all hover:scale-105 hover:shadow-2xl duration-300 w-full max-w-sm mx-auto">
+      
+      {/* AI Summarize Overlay Button */}
+      {onSummarize && (
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center p-4">
+              <button 
+                  onClick={onSummarize}
+                  className="bg-white text-blue-600 font-bold py-3 px-6 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-blue-50 flex items-center gap-2"
+              >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+                  </svg>
+                  Summarize & Suggest
+              </button>
+          </div>
+      )}
+
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-800 tracking-tight">{data.name}</h2>
         <p className="text-sm text-gray-500 font-medium uppercase tracking-wider mt-1">{description}</p>
