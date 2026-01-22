@@ -11,16 +11,11 @@ export async function POST(req) {
     let contextPart = "";
     if (weatherData) {
         if (weatherData.main && weatherData.weather) {
-             // Full current weather context
              contextPart = `Context: The current weather in ${weatherData.name} is ${weatherData.main.temp}°C, with ${weatherData.weather[0].description} and ${weatherData.main.humidity}% humidity.`;
         } else if (weatherData.name) {
-             // Minimal context (e.g. for analytics where data is in the query)
              contextPart = `Context: Analyzing weather data for ${weatherData.name}.`;
         }
     }
-
-
-
 
     const prompt = `
       You are a helpful and witty weather assistant. 

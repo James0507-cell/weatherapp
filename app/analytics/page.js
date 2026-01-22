@@ -29,13 +29,11 @@ export default function AnalyticsPage() {
     setAiAnalysis(''); // Reset previous analysis
     
     try {
-        // 1. Get coordinates first
         const weatherData = await getWeatherData(searchCity);
         if (!weatherData || !weatherData.coord) {
             throw new Error("City not found");
         }
 
-        // 2. Fetch Historical Data (try real API first)
         let data = [];
         try {
             data = await getHistoricalData(weatherData.coord.lat, weatherData.coord.lon);
@@ -50,13 +48,11 @@ export default function AnalyticsPage() {
 
         setHistoricalData(data);
         
-        // 3. Trigger AI Analysis
         analyzeData(searchCity, data);
 
     } catch (error) {
         console.error("Analytics Error:", error);
-        // Fallback completely to mock if even city search fails (or just show error)
-        // For better UX, we might just show an error message, but here we'll try mock as last resort for demo
+
         const data = getMockHistoricalData(searchCity);
         setHistoricalData(data);
         analyzeData(searchCity, data);
