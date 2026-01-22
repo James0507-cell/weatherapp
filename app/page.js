@@ -100,7 +100,7 @@ export default function Home() {
       )}
       
       {/* Weather Assistant / AI Section */}
-      <section className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mt-16 transition-all">
+      <section className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 md:p-8 mt-16 transition-all">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
               <div>
                   <h3 className="text-2xl font-bold text-gray-900">Weather Assistant</h3>

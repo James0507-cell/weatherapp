@@ -73,7 +73,7 @@ export default function AboutPage() {
                   <p className="text-sm text-gray-700 mb-4">
                       The intelligence behind the &quot;Weather Assistant.&quot; It analyzes weather context to provide human-like advice and insights.
                   </p>
-                  <span className="text-xs font-mono bg-white/50 px-2 py-1 rounded text-indigo-800">Model: Gemini 1.5 Flash</span>
+                  <span className="text-xs font-mono bg-white/50 px-2 py-1 rounded text-indigo-800">Model: Gemini 2.5 Flash</span>
               </div>
 
           </div>

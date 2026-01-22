@@ -35,18 +35,18 @@ export default function WeatherCard({ data }) {
         <span className="text-6xl font-extrabold text-gray-900">{temp}°</span>
       </div>
 
-      <div className="w-full grid grid-cols-3 gap-4 border-t border-gray-100 pt-4">
+      <div className="w-full grid grid-cols-3 gap-2 sm:gap-4 border-t border-gray-100 pt-4">
         <div className="flex flex-col items-center">
-          <span className="text-xs text-gray-400 font-semibold uppercase">Humidity</span>
-          <span className="text-lg font-bold text-gray-700">{humidity}%</span>
+          <span className="text-[10px] sm:text-xs text-gray-400 font-semibold uppercase">Humidity</span>
+          <span className="text-base sm:text-lg font-bold text-gray-700">{humidity}%</span>
         </div>
-        <div className="flex flex-col items-center border-l border-r border-gray-100">
-           <span className="text-xs text-gray-400 font-semibold uppercase">Wind</span>
-           <span className="text-lg font-bold text-gray-700">{Math.round(windSpeed)} m/s</span>
+        <div className="flex flex-col items-center border-l border-r border-gray-100 px-2">
+           <span className="text-[10px] sm:text-xs text-gray-400 font-semibold uppercase">Wind</span>
+           <span className="text-base sm:text-lg font-bold text-gray-700">{Math.round(windSpeed)} m/s</span>
         </div>
         <div className="flex flex-col items-center">
-           <span className="text-xs text-gray-400 font-semibold uppercase">Feels Like</span>
-           <span className="text-lg font-bold text-gray-700">{feelsLike}°</span>
+           <span className="text-[10px] sm:text-xs text-gray-400 font-semibold uppercase">Feels Like</span>
+           <span className="text-base sm:text-lg font-bold text-gray-700">{feelsLike}°</span>
         </div>
       </div>
 
@@ -61,11 +61,11 @@ export default function WeatherCard({ data }) {
                       const dayIconUrl = dayIcon ? `https://openweathermap.org/img/wn/${dayIcon}.png` : '';
                       
                       return (
-                          <div key={idx} className="flex items-center justify-between text-sm">
-                              <span className="w-24 text-gray-600 font-medium">{date}</span>
-                              <div className="flex items-center gap-2">
+                          <div key={idx} className="flex flex-wrap sm:flex-nowrap items-center justify-between text-sm gap-2">
+                              <span className="w-20 sm:w-24 text-gray-600 font-medium truncate">{date}</span>
+                              <div className="flex items-center gap-2 flex-grow justify-center sm:justify-start">
                                   {dayIconUrl && <img src={dayIconUrl} alt="icon" className="w-8 h-8 object-contain" />}
-                                  <span className="text-gray-500 capitalize text-xs">{day.weather?.[0]?.description}</span>
+                                  <span className="text-gray-500 capitalize text-xs hidden xs:block sm:block">{day.weather?.[0]?.description}</span>
                               </div>
                               <div className="flex gap-2 font-semibold text-gray-800">
                                   <span>{Math.round(day.temp.max || day.temp.day)}°</span>
