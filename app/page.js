@@ -118,10 +118,10 @@ export default function Home() {
                   </div>
               )}
 
-              <form onSubmit={askAssistant} className="flex gap-4">
+              <form onSubmit={askAssistant} className="flex flex-col sm:flex-row gap-4">
                   <input 
                       type="text"
-                      className="flex-grow p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"
+                      className="w-full sm:flex-grow p-3 sm:p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all"
                       placeholder={weatherList.length > 0 ? "Should I bring an umbrella?" : "Search for a city first..."}
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
@@ -130,7 +130,7 @@ export default function Home() {
                   <button 
                       type="submit"
                       disabled={weatherList.length === 0 || isAiLoading}
-                      className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                      className="w-full sm:w-auto bg-blue-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-bold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
                   >
                       {isAiLoading ? (
                           <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
