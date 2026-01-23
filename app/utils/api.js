@@ -21,6 +21,22 @@ export async function getWeatherData(city) {
   }
 }
 
+export async function getWeatherDataByCoords(lat, lon) {
+  try {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+        throw new Error("Failed to fetch weather data");
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+}
+
 export async function getDailyForecast(lat, lon) {
   try {
     // Note: This endpoint (forecast/daily) requires a paid subscription on OpenWeatherMap.
