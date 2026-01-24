@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="text-2xl font-bold text-blue-600 tracking-tight">
-              WeatherApp
+              Weatherlytics
             </Link>
           </div>
           <div className="hidden md:flex space-x-8">

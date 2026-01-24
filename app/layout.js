@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "WeatherApp - Global Forecasts",
+  title: "Weatherlytics - Global Forecasts",
   description: "Get real-time weather updates for any city worldwide. Fast, accurate, and beautiful.",
 };
 
