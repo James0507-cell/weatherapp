@@ -26,7 +26,7 @@ export default function AnalyticsPage() {
   const handleSearch = async (searchCity) => {
     setLoading(true);
     setCity(searchCity);
-    setAiAnalysis(''); // Reset previous analysis
+    setAiAnalysis('');
     
     try {
         const weatherData = await getWeatherData(searchCity);
@@ -68,7 +68,7 @@ export default function AnalyticsPage() {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                  weatherData: { name: cityName }, // Minimal context for the generic route
+                  weatherData: { name: cityName },
                   query: `Analyze this historical weather data for ${cityName} and provide 3 key insights or trends: ${JSON.stringify(data)}. Format as a concise list.`
               }),
           });
@@ -104,9 +104,7 @@ export default function AnalyticsPage() {
 
       {!loading && historicalData.length > 0 && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in duration-500">
-              {/* Charts Section */}
               <div className="lg:col-span-2 space-y-8">
-                  {/* Temperature Chart */}
                   <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                       <h3 className="text-lg font-semibold text-gray-800 mb-6">Temperature Trend (Last 7 Days)</h3>
                       <div className="h-[300px] w-full">
@@ -133,7 +131,6 @@ export default function AnalyticsPage() {
                       </div>
                   </div>
 
-                  {/* Humidity & Rainfall Chart */}
                   <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                       <h3 className="text-lg font-semibold text-gray-800 mb-6">Humidity & Rainfall</h3>
                       <div className="h-[300px] w-full">
@@ -156,7 +153,6 @@ export default function AnalyticsPage() {
                   </div>
               </div>
 
-              {/* AI Analysis Sidebar */}
               <div className="lg:col-span-1">
                   <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl p-6 h-full border border-indigo-100 sticky top-24">
                       <div className="flex items-center gap-3 mb-6">

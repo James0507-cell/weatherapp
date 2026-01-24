@@ -3,7 +3,6 @@ import React from 'react';
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
-      {/* Header Section */}
       <section className="text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
           About <span className="text-blue-600">Weatherlytics</span>
@@ -14,7 +13,6 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* How it Works / Usage */}
       <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
           <svg className="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,12 +42,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Resources & Technologies */}
       <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Powered By</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               
-              {/* OpenWeatherMap */}
               <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border border-orange-200 hover:shadow-md transition-shadow">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">OpenWeatherMap</h3>
                   <p className="text-sm text-gray-700 mb-4">
@@ -58,7 +54,6 @@ export default function AboutPage() {
                   <span className="text-xs font-mono bg-white/50 px-2 py-1 rounded text-orange-800">API: Current & Forecast</span>
               </div>
 
-              {/* Open-Meteo */}
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200 hover:shadow-md transition-shadow">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Open-Meteo</h3>
                   <p className="text-sm text-gray-700 mb-4">
@@ -67,7 +62,6 @@ export default function AboutPage() {
                   <span className="text-xs font-mono bg-white/50 px-2 py-1 rounded text-blue-800">API: Historical Forecast</span>
               </div>
 
-              {/* Google Gemini */}
               <div className="bg-gradient-to-br from-indigo-50 to-purple-100 p-6 rounded-2xl border border-indigo-200 hover:shadow-md transition-shadow">
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Google Gemini</h3>
                   <p className="text-sm text-gray-700 mb-4">
@@ -79,7 +73,6 @@ export default function AboutPage() {
           </div>
       </section>
 
-      {/* Footer / Tech Stack */}
       <div className="pt-8 border-t border-gray-200 text-center">
           <p className="text-gray-500 text-sm">
               Built with Next.js 16, Tailwind CSS, and Recharts.
