@@ -8,6 +8,8 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -27,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-full flex flex-col bg-slate-50`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-full flex flex-col`}
       >
         <Navbar />
         <main className="flex-grow">
