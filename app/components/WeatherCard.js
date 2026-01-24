@@ -28,13 +28,13 @@ export default function WeatherCard({ data, onSummarize }) {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-br from-blue-50 via-indigo-50 to-white opacity-60 z-0"></div>
 
       {onSummarize && (
-          <div className={`absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] transition-all duration-300 z-20 flex items-center justify-center p-4 ${showOverlay ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          <div className={`absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] transition-all duration-300 z-20 flex items-center justify-center p-4 ${showOverlay ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto'}`}>
               <button 
                   onClick={(e) => {
                       e.stopPropagation();
                       onSummarize();
                   }}
-                  className={`bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-2xl transform transition-all duration-300 hover:bg-indigo-50 hover:scale-105 flex items-center gap-2 ${showOverlay ? 'translate-y-0' : 'translate-y-8'}`}
+                  className={`bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-2xl transform transition-all duration-300 hover:bg-indigo-50 hover:scale-105 flex items-center gap-2 ${showOverlay ? 'translate-y-0' : 'translate-y-8 group-hover:translate-y-0'}`}
               >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
