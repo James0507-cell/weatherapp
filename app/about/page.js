@@ -6,7 +6,7 @@ export default function AboutPage() {
       {/* Header Section */}
       <section className="text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
-          About <span className="text-blue-600">WeatherApp</span>
+          About <span className="text-blue-600">Weatherlytics</span>
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
           A modern, intelligent weather dashboard designed to give you more than just the temperature. 

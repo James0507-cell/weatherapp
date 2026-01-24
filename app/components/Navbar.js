@@ -26,7 +26,6 @@ export default function Navbar() {
               About
             </Link>
           </div>
-          {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
              <button
                  type="button"
@@ -49,7 +48,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">

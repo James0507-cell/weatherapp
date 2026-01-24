@@ -44,7 +44,6 @@ export default function Home() {
     }
   }, []);
   
-  // AI Assistant State
   const [query, setQuery] = useState("");
   const [aiResponse, setAiResponse] = useState("");
   const [isAiLoading, setIsAiLoading] = useState(false);
@@ -55,7 +54,6 @@ export default function Home() {
     try {
       const currentData = await getWeatherData(city);
       
-      // Fetch forecast using coordinates
       let forecastData = null;
       if (currentData.coord) {
           try {
@@ -65,7 +63,6 @@ export default function Home() {
           }
       }
 
-      // Store combined data
       setWeatherList((prev) => [{ ...currentData, forecast: forecastData }, ...prev]);
     } catch (err) {
       setError(err.message || "Failed to fetch weather");
@@ -84,7 +81,7 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          weatherData: weatherList[0], // Ask about the most recently searched city
+          weatherData: weatherList[0],
           query: query
         }),
       });
@@ -103,10 +100,6 @@ export default function Home() {
       setIsAiLoading(true);
       
       try {
-          // Scroll to AI section if needed (optional, but good UX)
-          // const aiSection = document.getElementById('ai-section');
-          // if (aiSection) aiSection.scrollIntoView({ behavior: 'smooth' });
-
           const response = await fetch("/api/chat", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -126,7 +119,6 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-      {/* Hero / Search Section */}
       <div className="text-center space-y-6">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
           Check the Weather <span className="text-blue-600">Instantly</span>
@@ -144,7 +136,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* Local Weather Section */}
       {isLocating && (
         <div className="flex justify-center py-4">
           <span className="text-gray-500 animate-pulse">Detecting location...</span>
@@ -168,14 +159,12 @@ export default function Home() {
         </div>
       )}
 
-      {/* Loading State */}
       {loading && (
           <div className="flex justify-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           </div>
       )}
 
-      {/* Weather Cards Grid */}
       {weatherList.length > 0 && (
           <div className="flex flex-wrap justify-center gap-8">
               {weatherList.map((data, index) => (
@@ -188,7 +177,6 @@ export default function Home() {
           </div>
       )}
       
-      {/* Weather Assistant / AI Section */}
       <section className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 md:p-8 mt-16 transition-all">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
               <div>

@@ -25,15 +25,13 @@ export default function WeatherCard({ data, onSummarize }) {
         className="group relative bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden border border-gray-100 flex flex-col transition-all hover:scale-[1.02] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] duration-500 w-full max-w-sm mx-auto cursor-pointer"
     >
       
-      {/* Decorative Header Gradient */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-br from-blue-50 via-indigo-50 to-white opacity-60 z-0"></div>
 
-      {/* AI Summarize Overlay Button */}
       {onSummarize && (
           <div className={`absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] transition-all duration-300 z-20 flex items-center justify-center p-4 ${showOverlay ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
               <button 
                   onClick={(e) => {
-                      e.stopPropagation(); // Prevent card click from toggling
+                      e.stopPropagation();
                       onSummarize();
                   }}
                   className={`bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-2xl transform transition-all duration-300 hover:bg-indigo-50 hover:scale-105 flex items-center gap-2 ${showOverlay ? 'translate-y-0' : 'translate-y-8'}`}
@@ -46,7 +44,6 @@ export default function WeatherCard({ data, onSummarize }) {
           </div>
       )}
 
-      {/* Main Content */}
       <div className="relative z-10 p-6 flex flex-col items-center">
           <div className="text-center w-full mb-2">
             <h2 className="text-2xl font-bold text-gray-800 tracking-tight">{data.name}</h2>
@@ -67,7 +64,6 @@ export default function WeatherCard({ data, onSummarize }) {
             <span className="text-7xl font-black text-gray-800 tracking-tighter">{temp}°</span>
           </div>
 
-          {/* Stats Grid */}
           <div className="w-full grid grid-cols-3 gap-4">
             <div className="flex flex-col items-center bg-gray-50 rounded-2xl p-3 transition-colors group-hover:bg-blue-50/50">
               <svg className="w-5 h-5 text-blue-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,12 +77,9 @@ export default function WeatherCard({ data, onSummarize }) {
                <svg className="w-5 h-5 text-gray-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> 
                </svg>
-               {/* Note: using a simplified icon for wind/air here as a placeholder or generic */}
                <svg className="w-5 h-5 text-indigo-400 mb-1 absolute opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 {/* Better wind icon */}
                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                </svg>
-               {/* Actual Wind Icon */}
                <svg className="w-5 h-5 text-cyan-400 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -105,7 +98,6 @@ export default function WeatherCard({ data, onSummarize }) {
           </div>
       </div>
 
-      {/* Forecast Section */}
       {data.forecast && data.forecast.list && (
           <div className="w-full bg-gray-50/50 p-6 border-t border-gray-100">
               <div className="flex items-center justify-between mb-4">
